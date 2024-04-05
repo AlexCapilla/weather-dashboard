@@ -1,8 +1,13 @@
 // Add weatherapp code
 const weatherAppAPIKey = "5a9994c0a9a2b116f83d334037dad9eb"
-const city = "Ventura"
-const url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${weatherAppAPIKey}`;
+const city = ["Los Angeles", "San Diego", "Tokyo", "Paris", "Barcelona"];
+let url = `https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${weatherAppAPIKey}`;
 
+
+
+for (let i = 0; i < city.length; i++) {
+     url = `https://api.openweathermap.org/geo/1.0/direct?q=${city[i]}&appid=${weatherAppAPIKey}`;
+    
 fetch(url).then(function(response){
     return response.json();
 }).then(function(data){
@@ -24,3 +29,5 @@ fetch(url).then(function(response){
         }
     })
 })
+
+}
