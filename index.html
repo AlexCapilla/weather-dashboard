@@ -14,7 +14,7 @@
   </head>
   <body>
     <header>
-      <h1 class="text-center p-4"> Weather Dashboard </h1>
+      <h1 class="text-center p-4">Weather Dashboard</h1>
     </header>
     <main class="container">
       <section class="row">
@@ -24,7 +24,6 @@
             <div class="input-section">
               <input
                 class="form-input"
-                style="width: 100%;"
                 type="text"
                 id="search-input"
                 placeholder="Search for a city"
@@ -33,8 +32,8 @@
               />
             </div>
 
-            <div>
-              <button style="width: 100%;" class="btn search-button btn-primary">Search</button>
+            <div class="button-section">
+              <button class="btn search-button btn-primary">Search</button>
             </div>
             <hr />
           </form>
@@ -52,5 +51,28 @@
     integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
     crossorigin="anonymous"
   ></script>
+
+  <!-- use day.js to format date easier-->
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js"
+    integrity="sha512-FwNWaxyfy2XlEINoSnZh1JQ5TRRtGow0D6XcmAWmYCRgvqOUTnzCxPc9uF35u5ZEpirk1uhlPVA19tflhvnW1g=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/utc.min.js"
+    integrity="sha512-z84O912dDT9nKqvpBnl1tri5IN0j/OEgMzLN1GlkpKLMscs5ZHVu+G2CYtA6dkS0YnOGi3cODt3BOPnYc8Agjg=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
+  <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/plugin/timezone.min.js"
+    integrity="sha512-jmsGNYDezdyZ+W3bVeZy83kZp/2n5BgWe/0solkveG0vSSrP9XIVTD1tNiM1OqImc4H3OxHfs1uSfVclOU3mWw=="
+    crossorigin="anonymous"
+    referrerpolicy="no-referrer"
+  ></script>
+
   <script src="./assets/script.js"></script>
 </html>
