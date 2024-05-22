@@ -8,6 +8,40 @@ const todayContainer = document.querySelector("#today");
 const forecastContainer = document.querySelector("#forecast");
 const weatherHistoryContainer = document.querySelector("#weather-history");
 
+
+const fetchWeather = (location) => {
+
+}
+
+
+const createSearchHistory = () => {
+  weatherHistoryContainer.innerHTML = "";
+  for (let index = 0; index < searchHistoryForWeather.length; index++) {
+    const buttonElement = document.createElement("button");
+    buttonElement.setAttribute("id", "city-button");
+    buttonElement.setAttribute("type", "button");
+    buttonElement.setAttribute("class", "btn btn-secondary");
+    buttonElement.setAttribute("aria-controls", "today forecast");
+    buttonElement.classList.add("history-button");
+    buttonElement.setAttribute("data-search", searchHistoryForWeather[index]);
+    buttonElement.textContent = searchHistoryForWeather[index];
+    weatherHistoryContainer.append(buttonElement);
+    
+  }
+}
+
+
+
+const appendWeatherHistory = (search) => {
+  if(searchHistoryForWeather.indexOf(search) !== -1) {
+    return;
+  }
+  searchHistoryForWeather.push(search);
+  localStorage.setItem("weatherHistory", JSON.stringify(searchHistoryForWeather));
+  createSearchHistory();
+}
+
+
 const fetchCoordinates = (search) => {
   // a. url -> endpoint
   // b. paramters -> query string
@@ -17,12 +51,21 @@ const fetchCoordinates = (search) => {
   fetch(url)
     .then(function (response) {
       return response.json();
-    }).then(function (data) {
-        console.log(data);
     })
-
-
-}
+    .then(function (data) {
+      if (!data[0]) {
+        alert("City not found");
+      } else {
+        console.log(data);
+        console.log(search);
+        appendWeatherHistory(search);
+        fetchWeather(data[0]);
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+};
 
 const handleSearchFormSubmit = (event) => {
   event.preventDefault();
@@ -33,6 +76,15 @@ const handleSearchFormSubmit = (event) => {
   }
   searchInput.value = "";
 };
+
+const initializeSearchHistory = () => {
+  const storedWeatherHistory = JSON.parse(localStorage.getItem("weatherHistory"));
+  if(storedWeatherHistory) {
+    searchHistoryForWeather = storedWeatherHistory;
+  }
+  console.log(searchHistoryForWeather);
+  createSearchHistory();
+}
 
 searchForm.addEventListener("submit", handleSearchFormSubmit);
 
