@@ -22,4 +22,20 @@
 
 #city-button {
     margin-bottom: 10px;
+    background-color: var(--ventura-Orange);
 }
+
+header {
+    background-color: var(--ventura-Blue);
+}
+
+header h1 {
+    color: white;
+}
+
+#search-form {
+    background-color: var(--ventura-light);
+    padding: 5px;
+}
+
+
